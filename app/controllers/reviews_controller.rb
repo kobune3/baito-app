@@ -4,10 +4,12 @@ class ReviewsController < ApplicationController
   end
   
   def new
+    @review=Review.new
   end
   
   def create
     Review.create(firm: review_params[:firm], review: review_params[:review])
+    redirect_to "/"
   end
   
   private

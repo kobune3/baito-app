@@ -1,10 +1,17 @@
 <div class="container">
-    <%= form_for @reviews do |f| %>
+    <%= form_for(@review) do |f| %>
       <h3>
         投稿する
       </h3>
-      <input type="text" name="image" placeholder="Image URL" autofocus="true">
-      <textarea name="text" placeholder="text" rows="10" cols="30"></textarea>
-      <input type="submit" value="SENT">
+      <div class="field">
+        <%= f.label :"企業名" %><br />
+        <%= f.text_field :firm, autofocus: true, name: :firm %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :"レビュー" %><br />
+        <%= f.text_area :review, name: :review %>
+      </div>
+        <%= f.submit "投稿", class: "btn btn-primary" %>
     <% end %>
   </div>
