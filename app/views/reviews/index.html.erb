@@ -1,12 +1,12 @@
 <div class="card">
+  <% @reviews.each do |review| %>
   <div class="card-header">
-    〇〇さん　21歳　男性　
+    <h2><%= review.firm %></h2><small>user nameさん age歳 gender</small>
   </div>
   <div class="card-body">
-    <h5 class="card-title">ぴょんぴょん舎稲荷町本店</h5>
-    <p class="card-text">２年半ここのバイト先に勤務しましたがとても働きやすい環境でした。飲食店であるため、土日祝、イベント期間は忙しいです。
-    シフトが１週間に一度の提出なので、シフトの融通がきき、突然の予定が入った場合でも柔軟に対応してくれました。
-    旅行や学生のテスト期間などは前々から言っておくと長期の休みもいただけたのでとても助かりました。</p>
+    <h5 class="card-title">おすすめ度 星星星星星</h5>
+    <p class="card-text"><%= review.review %></p>
     <a href="#" class="btn btn-primary">詳しく見る</a>
   </div>
+  <% end %>
 </div>
