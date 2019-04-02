@@ -13,6 +13,9 @@
 ActiveRecord::Schema.define(version: 2019_04_02_065148) do
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "firm"
+    t.text "review"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
