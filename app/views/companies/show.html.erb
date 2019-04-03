@@ -1,0 +1,14 @@
+<div class="container">
+  <div class = "comapany_summary">
+    <h2><%= @company.name %></h2>
+    <p><img src="<%= @company.image %>"></p>
+  </div>
+  <div class = "">
+    <%= link_to "レビューを書く", new_company_review_path(@company) %>
+  </div>
+  <div class = "">
+    <% @company.reviews.each do |review| %>
+      <%= review.comment %>
+    <% end %>
+  </div>
+</div>
