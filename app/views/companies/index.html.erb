@@ -36,6 +36,6 @@
   
 <div class = "main">
   <% @companies.each do |company| %>
-    <a href="/companies/<%= company.id %>"><%= company.name %></a>
+    <%= link_to "#{company.name}", company_path(company) %>
   <% end %>
 </div>
