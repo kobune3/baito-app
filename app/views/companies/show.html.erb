@@ -1,7 +1,7 @@
 <div class="container">
   <div class = "comapany_summary">
     <h2><%= @company.name %></h2>
-    <p><img src="<%= @company.image %>"></p>
+    <%= image_tag @company.image.to_s %>
   </div>
   <div class = "">
     <%= link_to "レビューを書く", new_company_review_path(@company) %>
