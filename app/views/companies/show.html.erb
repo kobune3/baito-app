@@ -9,6 +9,7 @@
   <div class = "">
     <% @company.reviews.each do |review| %>
       <%= review.comment %>
+      <%= review.user.name %>
     <% end %>
   </div>
 </div>
