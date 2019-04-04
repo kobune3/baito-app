@@ -33,9 +33,12 @@
     </form>
   </div>
 </nav>
-  
+
 <div class = "main">
   <% @companies.each do |company| %>
-    <%= link_to "#{company.name}", company_path(company) %>
+    <div class = "company_summary">
+      <%= link_to "#{company.name}", company_path(company) %>
+      <!-- <%= image_tag "#{company.image}" %> -->
+    </div>
   <% end %>
 </div>
