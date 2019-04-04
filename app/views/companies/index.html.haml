@@ -1,0 +1,34 @@
+/ %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+/   %a.navbar-brand{:href => ""} 企業一覧
+/   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+/     %span.navbar-toggler-icon
+/   #navbarSupportedContent.collapse.navbar-collapse
+/     %ul.navbar-nav.mr-auto
+/       - if user_signed_in?
+/         %li.nav-item.active
+/           = link_to "新規投稿", new_company_path, class: "nav-link"
+/         %li.nav-item.active
+/           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
+/         %li.nav-item.dropdown
+/           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+/             = current_user.name
+/           .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+/             = link_to "ユーザー編集", edit_user_registration_path, class: "dropdown-item"
+/             = link_to "ユーザー詳細", user_path(current_user), class: "dropdown-item"
+/             .dropdown-divider
+/             %a.dropdown-item{:href => "#"} Something else here
+/       - else
+/         %li.nav-item.active
+/           = link_to "新規登録", new_user_registration_path, class: "nav-link"
+/         %li.nav-item.active
+/           = link_to "ログイン", new_user_session_path, class: "nav-link"
+/       %li.nav-item
+/         %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
+/     %form.form-inline.my-2.my-lg-0
+/       %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "気になる企業を検索", :type => "search"}/
+/       %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} 検索
+= render "shared/header"
+.main
+  - @companies.each do |company|
+    .company_summary
+      = link_to "#{company.name}", company_path(company)

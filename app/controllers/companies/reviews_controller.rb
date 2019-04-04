@@ -1,4 +1,6 @@
 class Companies::ReviewsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @reviews = Review.page(params[:page]).per(2).order("created_at DESC")
   end
