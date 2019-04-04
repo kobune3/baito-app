@@ -10,7 +10,7 @@ class Companies::ReviewsController < ApplicationController
   
   def create
     @review = Review.new(review_params)
-    @review.user_id = 6
+    @review.user_id = current_user.id
     @review.company = Company.find(params[:company_id])
     if @review.save
       redirect_to company_path(@review.company_id)
