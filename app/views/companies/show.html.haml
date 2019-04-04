@@ -1,0 +1,13 @@
+.container
+  .comapany_summary
+    %h2= @company.name
+    = image_tag "#{@company.image.url}"
+  .new_review
+    = link_to "レビューを書く", new_company_review_path(@company)
+  .reviews
+    - @company.reviews.each do |review|
+      - if review.user.present?
+        = review.comment
+        = review.user.name
+.back_home
+  = link_to "企業一覧へ", root_path

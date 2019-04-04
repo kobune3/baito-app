@@ -1,6 +1,12 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+
   def index
     @companies = Company.all
+  end
+
+  def show
+    @company = Company.find(params[:id])
   end
 
   def new
@@ -11,7 +17,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     respond_to do |format|
       if @company.save
-        format.html { redirect_to "/" }
+        format.html { redirect_to root_path }
       end
     end
   end
@@ -22,11 +28,7 @@ class CompaniesController < ApplicationController
 
   def update; end
   def destroy; end
-    
-  def show
-    @company = Company.find(params[:id])
-  end
-    
+
   private
   def company_params
     params.require(:company).permit(:name, :image)
