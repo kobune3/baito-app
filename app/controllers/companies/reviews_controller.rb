@@ -20,6 +20,7 @@ class Companies::ReviewsController < ApplicationController
   end
 
   def edit
+    @company = Company.find(params[:company_id])
     @review = Review.find(params[:id])
   end
 
@@ -27,9 +28,15 @@ class Companies::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to "/" }
+        format.html { redirect_to "/users/#{current_user.id}" }
       end
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to "/users/#{current_user.id}"
   end
 
   private
