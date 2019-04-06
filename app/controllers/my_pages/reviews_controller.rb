@@ -19,7 +19,7 @@ class MyPages::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
+    @review.destroy if current_user.id == @review.user_id
     redirect_to my_pages_reviews_path
   end
 
