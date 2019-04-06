@@ -1,18 +1,6 @@
 .container
   .user_info
     %h1 ユーザー詳細
-    %h2
-      名前：#{@user.name}
-    %h2
-      メールアドレス：#{@user.email}
-  .user_review
-    %h3
-      マイレビュー
-      %br
-        - @user.reviews.each do |review|
-          = review.company.name
-          = review.comment
-          = link_to "編集", edit_company_review_path(review.company_id,review)
-          = link_to "削除", company_review_path(review.company_id,review), method: :delete
+    %p 名前：#{@user.name}
 .backhome
   = link_to "企業一覧へ", root_path
