@@ -5,5 +5,6 @@
       %h1= image_tag "logo.png"
   #right_space
     .user_info
+    - if user_signed_in?
       = link_to "#{current_user.name}詳細へ", user_path(current_user)
       = link_to "マイレビュー一覧", my_pages_reviews_path
