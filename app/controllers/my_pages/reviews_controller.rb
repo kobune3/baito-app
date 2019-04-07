@@ -12,15 +12,22 @@ class MyPages::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to my_pages_reviews_path }
+        format.html { redirect_to my_pages_reviews_path, notice: "更新しました" }
+      else
+        format.html { render :edit, notice: "ダメ" }
       end
     end
   end
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy if current_user.id == @review.user_id
-    redirect_to my_pages_reviews_path
+    respond_to do |format|
+      if @review.destroy 
+        format.html { redirect_to my_pages_reviews_path, notice: "できた" }
+      else
+        format.html { render :index, notice: "だめ" }
+      end
+    end
   end
 
   private
