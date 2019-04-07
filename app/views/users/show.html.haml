@@ -1,6 +1,9 @@
-%h1 ユーザー詳細
-%h2
-  名前：#{@user.name}
-%h2
-  メールアドレス：#{@user.email}
-= link_to "企業一覧へ", "/"
+.container
+  .user_info
+    %h1 ユーザー詳細
+    %p 名前：#{@user.name}
+  .user_operate
+    = link_to "編集", profile_edit_path
+    = link_to "ログアウト", destroy_user_session_path, method: :delete
+.backhome
+  = link_to "企業一覧へ", root_path

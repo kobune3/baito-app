@@ -1,0 +1,21 @@
+- if flash[:notice].present?
+  = flash[:notice]
+.my_reviews
+  %h3 マイレビュー
+  %table
+    %thead
+      %tr
+        %th 企業名
+        %th コメント
+        %th
+        %th
+    %tbody
+      - @user.reviews.each do |review|
+        %tr
+          %td= review.company.name
+          %td= review.comment
+          - if current_user.id == review.user_id
+            %td= link_to "編集", edit_my_pages_review_path(review)
+            %td= link_to "削除", my_pages_review_path(review), method: :delete
+.back_home
+  = link_to "企業一覧へ", root_path

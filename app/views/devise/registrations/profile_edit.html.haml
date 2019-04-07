@@ -1,0 +1,7 @@
+= form_for current_user, url: profile_update_path do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .btn
+    = f.submit '更新する'
+= link_to "企業一覧へ", root_path
