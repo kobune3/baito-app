@@ -1,6 +1,6 @@
 = form_for current_user, url: profile_update_path do |f|
   .field
-    = f.label :name
+    = f.label :name, "名前"
     = f.text_field :name
   .btn
     = f.submit '更新する'
